@@ -1,0 +1,257 @@
+# GuardDuty finding type -> MITRE ATT&CK mapping
+# 方針: tactic はその technique が ATT&CK 上で実在する tactic のみ。
+# finding type は AWS 公式 active finding types 一覧に実在するもののみ。
+# 出典: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-active.html
+findings:
+  - finding_type: Recon:IAMUser/MaliciousIPCaller
+    tactic: reconnaissance
+    technique_id: T1595
+    technique_name: Active Scanning
+  - finding_type: Recon:IAMUser/TorIPCaller
+    tactic: reconnaissance
+    technique_id: T1595
+    technique_name: Active Scanning
+  - finding_type: Recon:EC2/Portscan
+    tactic: reconnaissance
+    technique_id: T1595.001
+    technique_name: "Active Scanning: Scanning IP Blocks"
+  - finding_type: Recon:EC2/PortProbeUnprotectedPort
+    tactic: reconnaissance
+    technique_id: T1595.001
+    technique_name: "Active Scanning: Scanning IP Blocks"
+  - finding_type: UnauthorizedAccess:IAMUser/ConsoleLoginSuccess.B
+    tactic: initial-access
+    technique_id: T1078.004
+    technique_name: "Valid Accounts: Cloud Accounts"
+  - finding_type: UnauthorizedAccess:IAMUser/MaliciousIPCaller
+    tactic: initial-access
+    technique_id: T1078.004
+    technique_name: "Valid Accounts: Cloud Accounts"
+  - finding_type: CredentialAccess:IAMUser/CompromisedCredentials
+    tactic: initial-access
+    technique_id: T1078.004
+    technique_name: "Valid Accounts: Cloud Accounts"
+  - finding_type: Policy:IAMUser/RootCredentialUsage
+    tactic: initial-access
+    technique_id: T1078.004
+    technique_name: "Valid Accounts: Cloud Accounts"
+  - finding_type: Execution:EC2/MaliciousFile
+    tactic: execution
+    technique_id: T1204
+    technique_name: User Execution
+  - finding_type: Execution:ECS/MaliciousFile
+    tactic: execution
+    technique_id: T1204
+    technique_name: User Execution
+  - finding_type: Execution:Runtime/ReverseShell
+    tactic: execution
+    technique_id: T1059
+    technique_name: Command and Scripting Interpreter
+  - finding_type: Execution:Runtime/NewBinaryExecuted
+    tactic: execution
+    technique_id: T1059
+    technique_name: Command and Scripting Interpreter
+  - finding_type: Execution:Kubernetes/ExecInKubeSystemPod
+    tactic: execution
+    technique_id: T1609
+    technique_name: Container Administration Command
+  - finding_type: Execution:Kubernetes/AnomalousBehavior.WorkloadDeployed
+    tactic: execution
+    technique_id: T1610
+    technique_name: Deploy Container
+  - finding_type: Persistence:IAMUser/AnomalousBehavior
+    tactic: persistence
+    technique_id: T1098
+    technique_name: Account Manipulation
+  - finding_type: Persistence:Runtime/SensitiveFileModified
+    tactic: persistence
+    technique_id: T1543
+    technique_name: Create or Modify System Process
+  - finding_type: PrivilegeEscalation:IAMUser/AnomalousBehavior
+    tactic: privilege-escalation
+    technique_id: T1098
+    technique_name: Account Manipulation
+  - finding_type: PrivilegeEscalation:Runtime/ElevationToRoot
+    tactic: privilege-escalation
+    technique_id: T1548
+    technique_name: Abuse Elevation Control Mechanism
+  - finding_type: PrivilegeEscalation:Runtime/RuncContainerEscape
+    tactic: privilege-escalation
+    technique_id: T1611
+    technique_name: Escape to Host
+  - finding_type: PrivilegeEscalation:Runtime/DockerSocketAccessed
+    tactic: privilege-escalation
+    technique_id: T1611
+    technique_name: Escape to Host
+  - finding_type: PrivilegeEscalation:Kubernetes/AnomalousBehavior.RoleBindingCreated
+    tactic: privilege-escalation
+    technique_id: T1098
+    technique_name: Account Manipulation
+  - finding_type: DefenseEvasion:IAMUser/AnomalousBehavior
+    tactic: defense-evasion
+    technique_id: T1562
+    technique_name: Impair Defenses
+  - finding_type: Stealth:IAMUser/CloudTrailLoggingDisabled
+    tactic: defense-evasion
+    technique_id: T1562.008
+    technique_name: "Impair Defenses: Disable or Modify Cloud Logs"
+  - finding_type: DefenseEvasion:IAMUser/BedrockLoggingDisabled
+    tactic: defense-evasion
+    technique_id: T1562.008
+    technique_name: "Impair Defenses: Disable or Modify Cloud Logs"
+  - finding_type: Stealth:S3/ServerAccessLoggingDisabled
+    tactic: defense-evasion
+    technique_id: T1562.008
+    technique_name: "Impair Defenses: Disable or Modify Cloud Logs"
+  - finding_type: Stealth:IAMUser/PasswordPolicyChange
+    tactic: defense-evasion
+    technique_id: T1562
+    technique_name: Impair Defenses
+  - finding_type: DefenseEvasion:Runtime/FilelessExecution
+    tactic: defense-evasion
+    technique_id: T1620
+    technique_name: Reflective Code Loading
+  - finding_type: DefenseEvasion:Runtime/ProcessInjection.Ptrace
+    tactic: defense-evasion
+    technique_id: T1055
+    technique_name: Process Injection
+  - finding_type: DefenseEvasion:Runtime/KernelModuleLoaded
+    tactic: defense-evasion
+    technique_id: T1014
+    technique_name: Rootkit
+  - finding_type: CredentialAccess:IAMUser/AnomalousBehavior
+    tactic: credential-access
+    technique_id: T1552
+    technique_name: Unsecured Credentials
+  - finding_type: UnauthorizedAccess:IAMUser/InstanceCredentialExfiltration.OutsideAWS
+    tactic: credential-access
+    technique_id: T1552.005
+    technique_name: "Unsecured Credentials: Cloud Instance Metadata API"
+  - finding_type: UnauthorizedAccess:IAMUser/InstanceCredentialExfiltration.InsideAWS
+    tactic: credential-access
+    technique_id: T1552.005
+    technique_name: "Unsecured Credentials: Cloud Instance Metadata API"
+  - finding_type: UnauthorizedAccess:EC2/SSHBruteForce
+    tactic: credential-access
+    technique_id: T1110
+    technique_name: Brute Force
+  - finding_type: UnauthorizedAccess:EC2/RDPBruteForce
+    tactic: credential-access
+    technique_id: T1110
+    technique_name: Brute Force
+  - finding_type: Impact:EC2/WinRMBruteForce
+    tactic: credential-access
+    technique_id: T1110
+    technique_name: Brute Force
+  - finding_type: CredentialAccess:RDS/AnomalousBehavior.SuccessfulBruteForce
+    tactic: credential-access
+    technique_id: T1110
+    technique_name: Brute Force
+  - finding_type: CredentialAccess:Kubernetes/AnomalousBehavior.SecretsAccessed
+    tactic: credential-access
+    technique_id: T1552.007
+    technique_name: "Unsecured Credentials: Container API"
+  - finding_type: Discovery:IAMUser/AnomalousBehavior
+    tactic: discovery
+    technique_id: T1580
+    technique_name: Cloud Infrastructure Discovery
+  - finding_type: Discovery:S3/AnomalousBehavior
+    tactic: discovery
+    technique_id: T1619
+    technique_name: Cloud Storage Object Discovery
+  - finding_type: Discovery:S3/MaliciousIPCaller
+    tactic: discovery
+    technique_id: T1619
+    technique_name: Cloud Storage Object Discovery
+  - finding_type: Discovery:Kubernetes/AnomalousBehavior.PermissionChecked
+    tactic: discovery
+    technique_id: T1069
+    technique_name: Permission Groups Discovery
+  - finding_type: Discovery:RDS/MaliciousIPCaller
+    tactic: discovery
+    technique_id: T1046
+    technique_name: Network Service Discovery
+  - finding_type: Impact:EC2/PortSweep
+    tactic: discovery
+    technique_id: T1046
+    technique_name: Network Service Discovery
+  - finding_type: Exfiltration:S3/MaliciousIPCaller
+    tactic: collection
+    technique_id: T1530
+    technique_name: Data from Cloud Storage
+  - finding_type: Backdoor:EC2/C&CActivity.B!DNS
+    tactic: command-and-control
+    technique_id: T1071.004
+    technique_name: "Application Layer Protocol: DNS"
+  - finding_type: Backdoor:EC2/C&CActivity.B
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: Application Layer Protocol
+  - finding_type: Backdoor:Lambda/C&CActivity.B
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: Application Layer Protocol
+  - finding_type: Trojan:EC2/DGADomainRequest.C!DNS
+    tactic: command-and-control
+    technique_id: T1568.002
+    technique_name: "Dynamic Resolution: Domain Generation Algorithms"
+  - finding_type: UnauthorizedAccess:EC2/TorClient
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"
+  - finding_type: UnauthorizedAccess:IAMUser/TorIPCaller
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"
+  - finding_type: DefenseEvasion:EC2/UnusualDoHActivity
+    tactic: command-and-control
+    technique_id: T1071.004
+    technique_name: "Application Layer Protocol: DNS"
+  - finding_type: Trojan:EC2/DNSDataExfiltration
+    tactic: exfiltration
+    technique_id: T1048
+    technique_name: Exfiltration Over Alternative Protocol
+  - finding_type: Exfiltration:IAMUser/AnomalousBehavior
+    tactic: exfiltration
+    technique_id: T1537
+    technique_name: Transfer Data to Cloud Account
+  - finding_type: Exfiltration:S3/AnomalousBehavior
+    tactic: exfiltration
+    technique_id: T1537
+    technique_name: Transfer Data to Cloud Account
+  - finding_type: Exfiltration:RDS/AnomalousBehavior
+    tactic: exfiltration
+    technique_id: T1048
+    technique_name: Exfiltration Over Alternative Protocol
+  - finding_type: CryptoCurrency:EC2/BitcoinTool.B!DNS
+    tactic: impact
+    technique_id: T1496
+    technique_name: Resource Hijacking
+  - finding_type: CryptoCurrency:Lambda/BitcoinTool.B
+    tactic: impact
+    technique_id: T1496
+    technique_name: Resource Hijacking
+  - finding_type: Impact:Runtime/CryptoMinerExecuted
+    tactic: impact
+    technique_id: T1496
+    technique_name: Resource Hijacking
+  - finding_type: Impact:EC2/BitcoinDomainRequest.Reputation
+    tactic: impact
+    technique_id: T1496
+    technique_name: Resource Hijacking
+  - finding_type: Impact:S3/AnomalousBehavior.Delete
+    tactic: impact
+    technique_id: T1485
+    technique_name: Data Destruction
+  - finding_type: Impact:RDS/AnomalousBehavior.Delete
+    tactic: impact
+    technique_id: T1485
+    technique_name: Data Destruction
+  - finding_type: Impact:S3/AnomalousBehavior.Write
+    tactic: impact
+    technique_id: T1565
+    technique_name: Data Manipulation
+  - finding_type: Backdoor:EC2/DenialOfService.Tcp
+    tactic: impact
+    technique_id: T1498
+    technique_name: Network Denial of Service

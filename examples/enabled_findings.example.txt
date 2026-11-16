@@ -1,0 +1,7 @@
+UnauthorizedAccess:IAMUser/InstanceCredentialExfiltration.OutsideAWS
+UnauthorizedAccess:EC2/SSHBruteForce
+UnauthorizedAccess:EC2/RDPBruteForce
+Stealth:IAMUser/CloudTrailLoggingDisabled
+Exfiltration:S3/AnomalousBehavior
+CryptoCurrency:EC2/BitcoinTool.B!DNS
+Backdoor:EC2/C&CActivity.B!DNS
