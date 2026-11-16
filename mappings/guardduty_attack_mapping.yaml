@@ -255,3 +255,701 @@ findings:
     tactic: impact
     technique_id: T1498
     technique_name: Network Denial of Service
+
+  # ===== auto-generated (要確認): build_mapping.py の叩き台 =====
+  - finding_type: Backdoor:EC2/DenialOfService.Dns
+    tactic: impact
+    technique_id: T1498
+    technique_name: "Network Denial of Service"  # auto
+  - finding_type: Backdoor:EC2/DenialOfService.Udp
+    tactic: impact
+    technique_id: T1498
+    technique_name: "Network Denial of Service"  # auto
+  - finding_type: Backdoor:EC2/DenialOfService.UdpOnTcpPorts
+    tactic: impact
+    technique_id: T1498
+    technique_name: "Network Denial of Service"  # auto
+  - finding_type: Backdoor:EC2/DenialOfService.UnusualProtocol
+    tactic: impact
+    technique_id: T1498
+    technique_name: "Network Denial of Service"  # auto
+  - finding_type: Backdoor:EC2/Spambot
+    tactic: impact
+    technique_id: T1496
+    technique_name: "Resource Hijacking"  # auto
+  - finding_type: Backdoor:Runtime/C&CActivity.B
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: Backdoor:Runtime/C&CActivity.B!DNS
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: Behavior:EC2/NetworkPortUnusual
+    tactic: command-and-control
+    technique_id: T1571
+    technique_name: "Non-Standard Port"  # auto
+  - finding_type: Behavior:EC2/TrafficVolumeUnusual
+    tactic: exfiltration
+    technique_id: T1048
+    technique_name: "Exfiltration Over Alternative Protocol"  # auto
+  - finding_type: CommandAndControl:Runtime/SuspiciousCommand
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: CredentialAccess:EC2/UnsecuredCredentials
+    tactic: credential-access
+    technique_id: T1552
+    technique_name: "Unsecured Credentials"  # auto
+  - finding_type: CredentialAccess:Kubernetes/MaliciousIPCaller
+    tactic: credential-access
+    technique_id: T1552
+    technique_name: "Unsecured Credentials"  # auto
+  - finding_type: CredentialAccess:Kubernetes/MaliciousIPCaller.Custom
+    tactic: credential-access
+    technique_id: T1552
+    technique_name: "Unsecured Credentials"  # auto
+  - finding_type: CredentialAccess:Kubernetes/SuccessfulAnonymousAccess
+    tactic: credential-access
+    technique_id: T1552
+    technique_name: "Unsecured Credentials"  # auto
+  - finding_type: CredentialAccess:Kubernetes/TorIPCaller
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: CredentialAccess:RDS/AnomalousBehavior.FailedLogin
+    tactic: credential-access
+    technique_id: T1552
+    technique_name: "Unsecured Credentials"  # auto
+  - finding_type: CredentialAccess:RDS/AnomalousBehavior.SuccessfulLogin
+    tactic: credential-access
+    technique_id: T1552
+    technique_name: "Unsecured Credentials"  # auto
+  - finding_type: CredentialAccess:RDS/MaliciousIPCaller.FailedLogin
+    tactic: credential-access
+    technique_id: T1552
+    technique_name: "Unsecured Credentials"  # auto
+  - finding_type: CredentialAccess:RDS/MaliciousIPCaller.SuccessfulLogin
+    tactic: credential-access
+    technique_id: T1552
+    technique_name: "Unsecured Credentials"  # auto
+  - finding_type: CredentialAccess:RDS/ModifyAuthenticationProcess
+    tactic: credential-access
+    technique_id: T1552
+    technique_name: "Unsecured Credentials"  # auto
+  - finding_type: CredentialAccess:RDS/TorIPCaller.FailedLogin
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: CredentialAccess:RDS/TorIPCaller.SuccessfulLogin
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: CredentialAccess:Runtime/SensitiveFileRead
+    tactic: credential-access
+    technique_id: T1552
+    technique_name: "Unsecured Credentials"  # auto
+  - finding_type: CryptoCurrency:EC2/BitcoinTool.B
+    tactic: impact
+    technique_id: T1496
+    technique_name: "Resource Hijacking"  # auto
+  - finding_type: CryptoCurrency:Runtime/BitcoinTool.B
+    tactic: impact
+    technique_id: T1496
+    technique_name: "Resource Hijacking"  # auto
+  - finding_type: CryptoCurrency:Runtime/BitcoinTool.B!DNS
+    tactic: impact
+    technique_id: T1496
+    technique_name: "Resource Hijacking"  # auto
+  - finding_type: DefenseEvasion:EC2/UnusualDNSResolver
+    tactic: command-and-control
+    technique_id: T1071.004
+    technique_name: "Application Layer Protocol: DNS"  # auto
+  - finding_type: DefenseEvasion:EC2/UnusualDoTActivity
+    tactic: command-and-control
+    technique_id: T1071.004
+    technique_name: "Application Layer Protocol: DNS"  # auto
+  - finding_type: DefenseEvasion:Kubernetes/MaliciousIPCaller
+    tactic: defense-evasion
+    technique_id: T1562
+    technique_name: "Impair Defenses"  # auto
+  - finding_type: DefenseEvasion:Kubernetes/MaliciousIPCaller.Custom
+    tactic: defense-evasion
+    technique_id: T1562
+    technique_name: "Impair Defenses"  # auto
+  - finding_type: DefenseEvasion:Kubernetes/SuccessfulAnonymousAccess
+    tactic: defense-evasion
+    technique_id: T1562
+    technique_name: "Impair Defenses"  # auto
+  - finding_type: DefenseEvasion:Kubernetes/TorIPCaller
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: DefenseEvasion:Runtime/ProcessInjection.Proc
+    tactic: defense-evasion
+    technique_id: T1055
+    technique_name: "Process Injection"  # auto
+  - finding_type: DefenseEvasion:Runtime/ProcessInjection.VirtualMemoryWrite
+    tactic: defense-evasion
+    technique_id: T1055
+    technique_name: "Process Injection"  # auto
+  - finding_type: DefenseEvasion:Runtime/PtraceAntiDebugging
+    tactic: defense-evasion
+    technique_id: T1622
+    technique_name: "Debugger Evasion"  # auto
+  - finding_type: DefenseEvasion:Runtime/SensitiveFileModified
+    tactic: defense-evasion
+    technique_id: T1562
+    technique_name: "Impair Defenses"  # auto
+  - finding_type: DefenseEvasion:Runtime/SuspiciousCommand
+    tactic: defense-evasion
+    technique_id: T1562
+    technique_name: "Impair Defenses"  # auto
+  - finding_type: DefenseImpairment:EC2/DisableOrModifyTools
+    tactic: defense-evasion
+    technique_id: T1562.001
+    technique_name: "Impair Defenses: Disable or Modify Tools"  # auto
+  - finding_type: DefenseImpairment:Organizations/DisableOrModifyTools
+    tactic: defense-evasion
+    technique_id: T1562.001
+    technique_name: "Impair Defenses: Disable or Modify Tools"  # auto
+  - finding_type: DefenseImpairment:Organizations/ModifyCloudResourceHierarchy
+    tactic: defense-evasion
+    technique_id: T1578
+    technique_name: "Modify Cloud Compute Infrastructure"  # auto
+  - finding_type: DefenseImpairment:RDS/ModifyAuthenticationProcess
+    tactic: defense-evasion
+    technique_id: T1562
+    technique_name: "Impair Defenses"  # auto
+  - finding_type: DefenseImpairment:Route53Resolver/DisableOrModifyTools
+    tactic: defense-evasion
+    technique_id: T1562.001
+    technique_name: "Impair Defenses: Disable or Modify Tools"  # auto
+  - finding_type: DefenseImpairment:S3/DisableOrModifyTools
+    tactic: defense-evasion
+    technique_id: T1562.001
+    technique_name: "Impair Defenses: Disable or Modify Tools"  # auto
+  - finding_type: Discovery:Kubernetes/MaliciousIPCaller
+    tactic: discovery
+    technique_id: T1580
+    technique_name: "Cloud Infrastructure Discovery"  # auto
+  - finding_type: Discovery:Kubernetes/MaliciousIPCaller.Custom
+    tactic: discovery
+    technique_id: T1580
+    technique_name: "Cloud Infrastructure Discovery"  # auto
+  - finding_type: Discovery:Kubernetes/SuccessfulAnonymousAccess
+    tactic: discovery
+    technique_id: T1580
+    technique_name: "Cloud Infrastructure Discovery"  # auto
+  - finding_type: Discovery:Kubernetes/TorIPCaller
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: Discovery:RDS/TorIPCaller
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: Discovery:Runtime/SensitiveFileRead
+    tactic: credential-access
+    technique_id: T1552
+    technique_name: "Unsecured Credentials"  # auto
+  - finding_type: Discovery:Runtime/SuspiciousCommand
+    tactic: discovery
+    technique_id: T1580
+    technique_name: "Cloud Infrastructure Discovery"  # auto
+  - finding_type: Discovery:S3/MaliciousIPCaller.Custom
+    tactic: discovery
+    technique_id: T1580
+    technique_name: "Cloud Infrastructure Discovery"  # auto
+  - finding_type: Discovery:S3/TorIPCaller
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: Execution:Container/MaliciousFile
+    tactic: execution
+    technique_id: T1204
+    technique_name: "User Execution"  # auto
+  - finding_type: Execution:Container/SuspiciousFile
+    tactic: execution
+    technique_id: T1204
+    technique_name: "User Execution"  # auto
+  - finding_type: Execution:EC2/MaliciousFile!AMI
+    tactic: execution
+    technique_id: T1204
+    technique_name: "User Execution"  # auto
+  - finding_type: Execution:EC2/MaliciousFile!RecoveryPoint
+    tactic: execution
+    technique_id: T1204
+    technique_name: "User Execution"  # auto
+  - finding_type: Execution:EC2/MaliciousFile!Snapshot
+    tactic: execution
+    technique_id: T1204
+    technique_name: "User Execution"  # auto
+  - finding_type: Execution:EC2/SuspiciousFile
+    tactic: execution
+    technique_id: T1204
+    technique_name: "User Execution"  # auto
+  - finding_type: Execution:ECS/SuspiciousFile
+    tactic: execution
+    technique_id: T1204
+    technique_name: "User Execution"  # auto
+  - finding_type: Execution:Kubernetes/AnomalousBehavior.ExecInPod
+    tactic: execution
+    technique_id: T1609
+    technique_name: "Container Administration Command"  # auto
+  - finding_type: Execution:Kubernetes/MaliciousFile
+    tactic: execution
+    technique_id: T1204
+    technique_name: "User Execution"  # auto
+  - finding_type: Execution:Kubernetes/SuspiciousFile
+    tactic: execution
+    technique_id: T1204
+    technique_name: "User Execution"  # auto
+  - finding_type: Execution:Runtime/MaliciousFileExecuted
+    tactic: execution
+    technique_id: T1059
+    technique_name: "Command and Scripting Interpreter"  # auto
+  - finding_type: Execution:Runtime/MaliciousFileExecuted.Custom
+    tactic: execution
+    technique_id: T1059
+    technique_name: "Command and Scripting Interpreter"  # auto
+  - finding_type: Execution:Runtime/NewLibraryLoaded
+    tactic: execution
+    technique_id: T1129
+    technique_name: "Shared Modules"  # auto
+  - finding_type: Execution:Runtime/SuspiciousCommand
+    tactic: execution
+    technique_id: T1059
+    technique_name: "Command and Scripting Interpreter"  # auto
+  - finding_type: Execution:Runtime/SuspiciousShellCreated
+    tactic: execution
+    technique_id: T1059
+    technique_name: "Command and Scripting Interpreter"  # auto
+  - finding_type: Execution:Runtime/SuspiciousTool
+    tactic: execution
+    technique_id: T1059
+    technique_name: "Command and Scripting Interpreter"  # auto
+  - finding_type: Execution:S3/MaliciousFile!RecoveryPoint
+    tactic: execution
+    technique_id: T1204
+    technique_name: "User Execution"  # auto
+  - finding_type: Execution:SageMaker/CommandAndScriptingInterpreter
+    tactic: execution
+    technique_id: T1059
+    technique_name: "Command and Scripting Interpreter"  # auto
+  - finding_type: Exfiltration:EC2/TransferDataToCloudAccount
+    tactic: exfiltration
+    technique_id: T1537
+    technique_name: "Transfer Data to Cloud Account"  # auto
+  - finding_type: Exfiltration:RDS/MaliciousIPCaller
+    tactic: exfiltration
+    technique_id: T1041
+    technique_name: "Exfiltration Over C2 Channel"  # auto
+  - finding_type: Exfiltration:RDS/TorIPCaller
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: Exfiltration:RDS/TransferDataToCloudAccount
+    tactic: exfiltration
+    technique_id: T1537
+    technique_name: "Transfer Data to Cloud Account"  # auto
+  - finding_type: Exfiltration:Runtime/SuspiciousCommand
+    tactic: exfiltration
+    technique_id: T1041
+    technique_name: "Exfiltration Over C2 Channel"  # auto
+  - finding_type: Exfiltration:S3/TransferDataToCloudAccount
+    tactic: exfiltration
+    technique_id: T1537
+    technique_name: "Transfer Data to Cloud Account"  # auto
+  - finding_type: Impact:EC2/AbusedDomainRequest.Reputation
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: Impact:EC2/MaliciousDomainRequest.Custom
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: Impact:EC2/MaliciousDomainRequest.Reputation
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: Impact:EC2/SuspiciousDomainRequest.Reputation
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: Impact:IAMUser/AnomalousBehavior
+    tactic: impact
+    technique_id: T1496
+    technique_name: "Resource Hijacking"  # auto
+  - finding_type: Impact:IAMUser/AnomalousModelInvocation
+    tactic: impact
+    technique_id: T1496
+    technique_name: "Resource Hijacking"  # auto
+  - finding_type: Impact:IAMUser/CostHarvesting
+    tactic: impact
+    technique_id: T1496
+    technique_name: "Resource Hijacking"  # auto
+  - finding_type: Impact:IAMUser/PromptInjection.Direct
+    tactic: impact
+    technique_id: T1565
+    technique_name: "Data Manipulation"  # auto
+  - finding_type: Impact:Kubernetes/MaliciousIPCaller
+    tactic: impact
+    technique_id: T1496
+    technique_name: "Resource Hijacking"  # auto
+  - finding_type: Impact:Kubernetes/MaliciousIPCaller.Custom
+    tactic: impact
+    technique_id: T1496
+    technique_name: "Resource Hijacking"  # auto
+  - finding_type: Impact:Kubernetes/SuccessfulAnonymousAccess
+    tactic: impact
+    technique_id: T1496
+    technique_name: "Resource Hijacking"  # auto
+  - finding_type: Impact:Kubernetes/TorIPCaller
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: Impact:RDS/AnomalousBehavior.Drop
+    tactic: impact
+    technique_id: T1485
+    technique_name: "Data Destruction"  # auto
+  - finding_type: Impact:RDS/MaliciousIPCaller
+    tactic: impact
+    technique_id: T1496
+    technique_name: "Resource Hijacking"  # auto
+  - finding_type: Impact:RDS/TorIPCaller
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: Impact:Runtime/AbusedDomainRequest.Reputation
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: Impact:Runtime/BitcoinDomainRequest.Reputation
+    tactic: impact
+    technique_id: T1496
+    technique_name: "Resource Hijacking"  # auto
+  - finding_type: Impact:Runtime/MaliciousDomainRequest.Reputation
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: Impact:Runtime/SuspiciousDomainRequest.Reputation
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: Impact:S3/AnomalousBehavior.Permission
+    tactic: impact
+    technique_id: T1565
+    technique_name: "Data Manipulation"  # auto
+  - finding_type: Impact:S3/DataDestruction
+    tactic: impact
+    technique_id: T1485
+    technique_name: "Data Destruction"  # auto
+  - finding_type: Impact:S3/MaliciousIPCaller
+    tactic: impact
+    technique_id: T1496
+    technique_name: "Resource Hijacking"  # auto
+  - finding_type: Impact:SES/ResourceHijacking
+    tactic: impact
+    technique_id: T1496
+    technique_name: "Resource Hijacking"  # auto
+  - finding_type: InitialAccess:IAM/ValidAccounts
+    tactic: initial-access
+    technique_id: T1078.004
+    technique_name: "Valid Accounts: Cloud Accounts"  # auto
+  - finding_type: InitialAccess:IAMUser/AnomalousBehavior
+    tactic: initial-access
+    technique_id: T1078.004
+    technique_name: "Valid Accounts: Cloud Accounts"  # auto
+  - finding_type: InitialAccess:RDS/ExploitPublicFacingApplication
+    tactic: initial-access
+    technique_id: T1190
+    technique_name: "Exploit Public-Facing Application"  # auto
+  - finding_type: LateralMovement:EC2/RemoteServices
+    tactic: lateral-movement
+    technique_id: T1021
+    technique_name: "Remote Services"  # auto
+  - finding_type: Object:S3/MaliciousFile
+    tactic: execution
+    technique_id: T1204
+    technique_name: "User Execution"  # auto
+  - finding_type: PenTest:IAMUser/KaliLinux
+    tactic: discovery
+    technique_id: T1580
+    technique_name: "Cloud Infrastructure Discovery"  # auto
+  - finding_type: PenTest:IAMUser/ParrotLinux
+    tactic: discovery
+    technique_id: T1580
+    technique_name: "Cloud Infrastructure Discovery"  # auto
+  - finding_type: PenTest:IAMUser/PentooLinux
+    tactic: discovery
+    technique_id: T1580
+    technique_name: "Cloud Infrastructure Discovery"  # auto
+  - finding_type: PenTest:S3/KaliLinux
+    tactic: discovery
+    technique_id: T1580
+    technique_name: "Cloud Infrastructure Discovery"  # auto
+  - finding_type: PenTest:S3/ParrotLinux
+    tactic: discovery
+    technique_id: T1580
+    technique_name: "Cloud Infrastructure Discovery"  # auto
+  - finding_type: PenTest:S3/PentooLinux
+    tactic: discovery
+    technique_id: T1580
+    technique_name: "Cloud Infrastructure Discovery"  # auto
+  - finding_type: Persistence:EC2/BootOrLogonInitializationScripts
+    tactic: persistence
+    technique_id: T1037
+    technique_name: "Boot or Logon Initialization Scripts"  # auto
+  - finding_type: Persistence:EC2/ExternalRemoteServices
+    tactic: persistence
+    technique_id: T1133
+    technique_name: "External Remote Services"  # auto
+  - finding_type: Persistence:IAM/AccountManipulation
+    tactic: persistence
+    technique_id: T1098
+    technique_name: "Account Manipulation"  # auto
+  - finding_type: Persistence:Kubernetes/AnomalousBehavior.WorkloadDeployed!ContainerWithSensitiveMount
+    tactic: execution
+    technique_id: T1610
+    technique_name: "Deploy Container"  # auto
+  - finding_type: Persistence:Kubernetes/ContainerWithSensitiveMount
+    tactic: privilege-escalation
+    technique_id: T1611
+    technique_name: "Escape to Host"  # auto
+  - finding_type: Persistence:Kubernetes/MaliciousIPCaller
+    tactic: persistence
+    technique_id: T1098
+    technique_name: "Account Manipulation"  # auto
+  - finding_type: Persistence:Kubernetes/MaliciousIPCaller.Custom
+    tactic: persistence
+    technique_id: T1098
+    technique_name: "Account Manipulation"  # auto
+  - finding_type: Persistence:Kubernetes/SuccessfulAnonymousAccess
+    tactic: persistence
+    technique_id: T1098
+    technique_name: "Account Manipulation"  # auto
+  - finding_type: Persistence:Kubernetes/TorIPCaller
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: Persistence:Lambda/AccountManipulation
+    tactic: persistence
+    technique_id: T1098
+    technique_name: "Account Manipulation"  # auto
+  - finding_type: Persistence:Lambda/ModifyAuthenticationProcess
+    tactic: persistence
+    technique_id: T1098
+    technique_name: "Account Manipulation"  # auto
+  - finding_type: Persistence:RolesAnywhere/AccountManipulation
+    tactic: persistence
+    technique_id: T1098
+    technique_name: "Account Manipulation"  # auto
+  - finding_type: Persistence:Runtime/SuspiciousCommand
+    tactic: persistence
+    technique_id: T1098
+    technique_name: "Account Manipulation"  # auto
+  - finding_type: Policy:IAMUser/ShortTermRootCredentialUsage
+    tactic: initial-access
+    technique_id: T1078.004
+    technique_name: "Valid Accounts: Cloud Accounts"  # auto
+  - finding_type: Policy:Kubernetes/AdminAccessToDefaultServiceAccount
+    tactic: defense-evasion
+    technique_id: T1562
+    technique_name: "Impair Defenses"  # auto
+  - finding_type: Policy:Kubernetes/AnonymousAccessGranted
+    tactic: collection
+    technique_id: T1530
+    technique_name: "Data from Cloud Storage"  # auto
+  - finding_type: Policy:Kubernetes/ExposedDashboard
+    tactic: initial-access
+    technique_id: T1190
+    technique_name: "Exploit Public-Facing Application"  # auto
+  - finding_type: Policy:Kubernetes/KubeflowDashboardExposed
+    tactic: initial-access
+    technique_id: T1190
+    technique_name: "Exploit Public-Facing Application"  # auto
+  - finding_type: Policy:S3/AccountBlockPublicAccessDisabled
+    tactic: collection
+    technique_id: T1530
+    technique_name: "Data from Cloud Storage"  # auto
+  - finding_type: Policy:S3/BucketAnonymousAccessGranted
+    tactic: collection
+    technique_id: T1530
+    technique_name: "Data from Cloud Storage"  # auto
+  - finding_type: Policy:S3/BucketBlockPublicAccessDisabled
+    tactic: collection
+    technique_id: T1530
+    technique_name: "Data from Cloud Storage"  # auto
+  - finding_type: Policy:S3/BucketPublicAccessGranted
+    tactic: collection
+    technique_id: T1530
+    technique_name: "Data from Cloud Storage"  # auto
+  - finding_type: PrivilegeEscalation:IAM/AccountManipulation
+    tactic: persistence
+    technique_id: T1098
+    technique_name: "Account Manipulation"  # auto
+  - finding_type: PrivilegeEscalation:Kubernetes/AnomalousBehavior.RoleCreated
+    tactic: privilege-escalation
+    technique_id: T1098
+    technique_name: "Account Manipulation"  # auto
+  - finding_type: PrivilegeEscalation:Kubernetes/AnomalousBehavior.WorkloadDeployed!PrivilegedContainer
+    tactic: execution
+    technique_id: T1610
+    technique_name: "Deploy Container"  # auto
+  - finding_type: PrivilegeEscalation:Kubernetes/PrivilegedContainer
+    tactic: privilege-escalation
+    technique_id: T1611
+    technique_name: "Escape to Host"  # auto
+  - finding_type: PrivilegeEscalation:Runtime/CGroupsReleaseAgentModified
+    tactic: privilege-escalation
+    technique_id: T1611
+    technique_name: "Escape to Host"  # auto
+  - finding_type: PrivilegeEscalation:Runtime/ContainerMountsHostDirectory
+    tactic: privilege-escalation
+    technique_id: T1611
+    technique_name: "Escape to Host"  # auto
+  - finding_type: PrivilegeEscalation:Runtime/SensitiveFileModified
+    tactic: privilege-escalation
+    technique_id: T1548
+    technique_name: "Abuse Elevation Control Mechanism"  # auto
+  - finding_type: PrivilegeEscalation:Runtime/SuspiciousCommand
+    tactic: privilege-escalation
+    technique_id: T1548
+    technique_name: "Abuse Elevation Control Mechanism"  # auto
+  - finding_type: PrivilegeEscalation:Runtime/UserfaultfdUsage
+    tactic: privilege-escalation
+    technique_id: T1068
+    technique_name: "Exploitation for Privilege Escalation"  # auto
+  - finding_type: Recon:EC2/PortProbeEMRUnprotectedPort
+    tactic: discovery
+    technique_id: T1046
+    technique_name: "Network Service Discovery"  # auto
+  - finding_type: Recon:IAMUser/MaliciousIPCaller.Custom
+    tactic: reconnaissance
+    technique_id: T1595
+    technique_name: "Active Scanning"  # auto
+  - finding_type: ResourceDevelopment:SES/CompromiseAccounts
+    tactic: resource-development
+    technique_id: T1586
+    technique_name: "Compromise Accounts"  # auto
+  - finding_type: Trojan:EC2/BlackholeTraffic
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: Trojan:EC2/BlackholeTraffic!DNS
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: Trojan:EC2/DGADomainRequest.B
+    tactic: command-and-control
+    technique_id: T1568.002
+    technique_name: "Dynamic Resolution: Domain Generation Algorithms"  # auto
+  - finding_type: Trojan:EC2/DriveBySourceTraffic!DNS
+    tactic: initial-access
+    technique_id: T1189
+    technique_name: "Drive-by Compromise"  # auto
+  - finding_type: Trojan:EC2/DropPoint
+    tactic: exfiltration
+    technique_id: T1041
+    technique_name: "Exfiltration Over C2 Channel"  # auto
+  - finding_type: Trojan:EC2/DropPoint!DNS
+    tactic: exfiltration
+    technique_id: T1041
+    technique_name: "Exfiltration Over C2 Channel"  # auto
+  - finding_type: Trojan:EC2/PhishingDomainRequest!DNS
+    tactic: initial-access
+    technique_id: T1566
+    technique_name: "Phishing"  # auto
+  - finding_type: Trojan:Lambda/BlackholeTraffic
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: Trojan:Lambda/DropPoint
+    tactic: exfiltration
+    technique_id: T1041
+    technique_name: "Exfiltration Over C2 Channel"  # auto
+  - finding_type: Trojan:Runtime/BlackholeTraffic
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: Trojan:Runtime/BlackholeTraffic!DNS
+    tactic: command-and-control
+    technique_id: T1071
+    technique_name: "Application Layer Protocol"  # auto
+  - finding_type: Trojan:Runtime/DGADomainRequest.C!DNS
+    tactic: command-and-control
+    technique_id: T1568.002
+    technique_name: "Dynamic Resolution: Domain Generation Algorithms"  # auto
+  - finding_type: Trojan:Runtime/DriveBySourceTraffic!DNS
+    tactic: initial-access
+    technique_id: T1189
+    technique_name: "Drive-by Compromise"  # auto
+  - finding_type: Trojan:Runtime/DropPoint
+    tactic: exfiltration
+    technique_id: T1041
+    technique_name: "Exfiltration Over C2 Channel"  # auto
+  - finding_type: Trojan:Runtime/DropPoint!DNS
+    tactic: exfiltration
+    technique_id: T1041
+    technique_name: "Exfiltration Over C2 Channel"  # auto
+  - finding_type: Trojan:Runtime/PhishingDomainRequest!DNS
+    tactic: initial-access
+    technique_id: T1566
+    technique_name: "Phishing"  # auto
+  - finding_type: UnauthorizedAccess:EC2/MaliciousIPCaller.Custom
+    tactic: initial-access
+    technique_id: T1078.004
+    technique_name: "Valid Accounts: Cloud Accounts"  # auto
+  - finding_type: UnauthorizedAccess:EC2/MetadataDNSRebind
+    tactic: credential-access
+    technique_id: T1552.005
+    technique_name: "Unsecured Credentials: Cloud Instance Metadata API"  # auto
+  - finding_type: UnauthorizedAccess:EC2/TorRelay
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: UnauthorizedAccess:IAMUser/MaliciousIPCaller.Custom
+    tactic: initial-access
+    technique_id: T1078.004
+    technique_name: "Valid Accounts: Cloud Accounts"  # auto
+  - finding_type: UnauthorizedAccess:IAMUser/ResourceCredentialExfiltration.InsideAWS
+    tactic: credential-access
+    technique_id: T1552
+    technique_name: "Unsecured Credentials"  # auto
+  - finding_type: UnauthorizedAccess:IAMUser/ResourceCredentialExfiltration.OutsideAWS
+    tactic: credential-access
+    technique_id: T1552
+    technique_name: "Unsecured Credentials"  # auto
+  - finding_type: UnauthorizedAccess:Lambda/MaliciousIPCaller.Custom
+    tactic: initial-access
+    technique_id: T1078.004
+    technique_name: "Valid Accounts: Cloud Accounts"  # auto
+  - finding_type: UnauthorizedAccess:Lambda/TorClient
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: UnauthorizedAccess:Lambda/TorRelay
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: UnauthorizedAccess:Runtime/MetadataDNSRebind
+    tactic: credential-access
+    technique_id: T1552.005
+    technique_name: "Unsecured Credentials: Cloud Instance Metadata API"  # auto
+  - finding_type: UnauthorizedAccess:Runtime/TorClient
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: UnauthorizedAccess:Runtime/TorRelay
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
+  - finding_type: UnauthorizedAccess:S3/MaliciousIPCaller.Custom
+    tactic: initial-access
+    technique_id: T1078.004
+    technique_name: "Valid Accounts: Cloud Accounts"  # auto
+  - finding_type: UnauthorizedAccess:S3/TorIPCaller
+    tactic: command-and-control
+    technique_id: T1090.003
+    technique_name: "Proxy: Multi-hop Proxy"  # auto
