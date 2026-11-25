@@ -1,0 +1,27 @@
+[
+  {
+    "Type": "UnauthorizedAccess:IAMUser/InstanceCredentialExfiltration.OutsideAWS",
+    "Region": "ap-northeast-1",
+    "Severity": 8,
+    "Resource": {"ResourceType": "AccessKey", "AccessKeyDetails": {"UserName": "EC2-role"}},
+    "Service": {"Action": {"ActionType": "AWS_API_CALL"}}
+  },
+  {
+    "Type": "CryptoCurrency:EC2/BitcoinTool.B!DNS",
+    "Region": "ap-northeast-1",
+    "Severity": 8,
+    "Resource": {"ResourceType": "Instance", "InstanceDetails": {"InstanceId": "i-0abc123"}}
+  },
+  {
+    "Type": "Stealth:IAMUser/CloudTrailLoggingDisabled",
+    "Region": "ap-northeast-1",
+    "Severity": 6,
+    "Resource": {"ResourceType": "AccessKey"}
+  },
+  {
+    "Type": "Exfiltration:S3/AnomalousBehavior",
+    "Region": "ap-northeast-1",
+    "Severity": 5,
+    "Resource": {"ResourceType": "S3Bucket"}
+  }
+]
