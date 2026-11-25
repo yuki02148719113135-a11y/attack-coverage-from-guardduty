@@ -44,9 +44,9 @@ OUTPUT_SCHEMA = {
         "triage_steps": {
             "type": "array",
             "items": {"type": "string"},
-            "description": "初動対応の具体手順を順番に。AWS の操作を含める。",
+            "description": "初動対応の具体手順を3〜6個、順番に。AWS の操作を含める。",
         },
-        "rationale": {"type": "string", "description": "なぜこの TTP と判断したかの短い根拠"},
+        "rationale": {"type": "string", "description": "なぜこの TTP と判断したかの根拠（200字以内）"},
     },
     "required": ["tactic", "technique_id", "technique_name", "confidence", "triage_steps", "rationale"],
 }
@@ -138,6 +138,16 @@ def build_prompt(finding: dict) -> str:
     )
 
 
+def normalize_steps(ts):
+    """Claude は配列フィールドを JSON 文字列で返すことがあるため、配列に正規化する。"""
+    if isinstance(ts, str):
+        try:
+            ts = json.loads(ts)
+        except json.JSONDecodeError:
+            ts = [line.strip() for line in ts.splitlines() if line.strip()]
+    return ts if isinstance(ts, list) else []
+
+
 def bedrock_enrich(finding: dict, model: str, region: str) -> dict:
     import boto3  # 遅延 import
 
@@ -154,11 +164,15 @@ def bedrock_enrich(finding: dict, model: str, region: str) -> dict:
         system=[{"text": SYSTEM}],
         messages=[{"role": "user", "content": [{"text": build_prompt(finding)}]}],
         toolConfig={"tools": [tool], "toolChoice": {"tool": {"name": "record_attack_triage"}}},
-        inferenceConfig={"maxTokens": 1024, "temperature": 0},
+        inferenceConfig={"maxTokens": 4096, "temperature": 0},
     )
+    if resp.get("stopReason") == "max_tokens":
+        print("  [warn] 出力が maxTokens で切れました（triage_steps 欠落の可能性）", file=sys.stderr)
     for block in resp["output"]["message"]["content"]:
         if "toolUse" in block:
-            return block["toolUse"]["input"]
+            rec = dict(block["toolUse"]["input"])
+            rec["triage_steps"] = normalize_steps(rec.get("triage_steps"))
+            return rec
     # フォールバック: 本文から JSON を拾う
     for block in resp["output"]["message"]["content"]:
         if "text" in block:

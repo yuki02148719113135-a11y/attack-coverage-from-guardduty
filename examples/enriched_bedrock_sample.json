@@ -1,0 +1,78 @@
+[
+  {
+    "finding_type": "UnauthorizedAccess:IAMUser/InstanceCredentialExfiltration.OutsideAWS",
+    "attack": {
+      "tactic": "credential-access",
+      "technique_id": "T1552.005",
+      "technique_name": "Unsecured Credentials: Cloud Instance Metadata API",
+      "confidence": "high"
+    },
+    "triage_steps": [
+      "【即時】該当 IAM ロール「EC2-role」にインラインポリシー（DenyAll）をアタッチし、一時認証情報を実質的に無効化する: aws iam put-role-policy --role-name EC2-role --policy-name EmergencyDeny --policy-document '{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Deny\",\"Action\":\"*\",\"Resource\":\"*\"}]}'",
+      "【即時】CloudTrail で当該アクセスキー（AccessKeyId）を使った API コールを過去 24〜72 時間分抽出し、不審な操作（S3 GetObject/PutObject、EC2 RunInstances、IAM CreateUser 等）を確認する: aws cloudtrail lookup-events --lookup-attributes AttributeKey=AccessKeyId,AttributeValue=<KeyId> --start-time <ISO8601>",
+      "【特定】GuardDuty finding の remoteIpDetails から外部 IP アドレスを取得し、脅威インテリジェンス（VirusTotal、Shodan 等）で攻撃者インフラか確認する。必要に応じて Security Group / NACL でその IP をブロックする。",
+      "【保全】認証情報が漏洩した EC2 インスタンスを特定し、EBS ボリュームのスナップショットをフォレンジック用に取得する: aws ec2 create-snapshot --volume-id <vol-id> --description 'forensic-snapshot-<date>'",
+      "【隔離】対象 EC2 インスタンスを隔離用 Security Group（全インバウンド/アウトバウンド拒否）に付け替え、既存 SG から切り離す: aws ec2 modify-instance-attribute --instance-id <i-xxxx> --groups <sg-isolate>",
+      "【根本原因調査】IMDS v1 が有効になっていないか確認し、IMDSv2 強制化（hop-limit=1, HttpTokens=required）を適用する: aws ec2 modify-instance-metadata-options --instance-id <i-xxxx> --http-tokens required --http-put-response-hop-limit 1。また、インスタンス上のプロセス・ユーザーデータ・cron ジョブを調査し、認証情報を外部送信したマルウェアや不審スクリプトを特定する。"
+    ],
+    "rationale": "Finding タイプ「InstanceCredentialExfiltration.OutsideAWS」は、EC2 インスタンスの IAM ロール（EC2-role）に紐づく一時認証情報が、AWS 外部の IP アドレスから使用されたことを示す。これは IMDS（Instance Metadata Service）経由で窃取した認証情報を外部から悪用する典型的な TTP であり、T1552.005 に高い確度で合致する。",
+    "source": "bedrock"
+  },
+  {
+    "finding_type": "CryptoCurrency:EC2/BitcoinTool.B!DNS",
+    "attack": {
+      "tactic": "impact",
+      "technique_id": "T1496",
+      "technique_name": "Resource Hijacking",
+      "confidence": "high"
+    },
+    "triage_steps": [
+      "【即時隔離】対象インスタンス i-0abc123 のセキュリティグループを全インバウンド／アウトバウンドを拒否する専用の隔離 SG（例: sg-quarantine）に差し替える。コマンド例: aws ec2 modify-instance-attribute --instance-id i-0abc123 --groups sg-xxxxxxxx",
+      "【証拠保全】インスタンスのルートボリュームおよびアタッチ済み EBS ボリュームのスナップショットを取得し、フォレンジック用に保存する。コマンド例: aws ec2 create-snapshot --volume-id vol-xxxxxxxx --description 'forensic-i-0abc123'",
+      "【ログ確認】VPC Flow Logs・CloudTrail・Route 53 Resolver Query Logs を確認し、マイニングプールドメインへの通信履歴、不審な API 呼び出し（RunInstances, CreateUser 等）、侵入経路を特定する。コマンド例: aws logs filter-log-events --log-group-name <VPCFlowLogGroup> --filter-pattern 'i-0abc123'",
+      "【認証情報の失効】インスタンスに付与されている IAM ロールのセッションを強制失効させる。IAM ロールのポリシーに明示的 Deny を追加するか、ロールのアタッチを解除する。",
+      "【侵入経路の調査】インスタンス上で実行中のプロセス・cronジョブ・スタートアップスクリプトを確認し、マイニングソフトウェア（xmrig 等）の存在を特定する。SSM Session Manager 経由で接続: aws ssm start-session --target i-0abc123",
+      "【再発防止】修正済みの新規インスタンスを AMI から再作成し、Route 53 Resolver DNS Firewall でマイニングプールドメインをブロックリストに追加する。"
+    ],
+    "rationale": "EC2インスタンス i-0abc123 がビットコインマイニングプールに関連するドメインへ DNS クエリを発行している。クラウドリソースを暗号通貨採掘に利用する Resource Hijacking（T1496）に直接対応。Severity 8（High）で信頼度は高い。",
+    "source": "bedrock"
+  },
+  {
+    "finding_type": "Stealth:IAMUser/CloudTrailLoggingDisabled",
+    "attack": {
+      "tactic": "defense-evasion",
+      "technique_id": "T1562.008",
+      "technique_name": "Impair Defenses: Disable Cloud Logs",
+      "confidence": "high"
+    },
+    "triage_steps": [
+      "【証跡の即時再有効化】aws cloudtrail start-logging --name <trail-name> --region ap-northeast-1 で CloudTrail ロギングを直ちに再開する。",
+      "【操作主体の特定と失効】StopLogging API の呼び出し元を特定し、aws iam update-access-key --access-key-id <key-id> --status Inactive --user-name <user> で当該 AccessKey を即時無効化する。",
+      "【影響範囲の調査】CloudTrail Lake または S3 上の既存ログで、当該 AccessKey が StopLogging 以外に行った操作を時系列で洗い出す。",
+      "【権限の棚卸し】aws iam list-attached-user-policies で権限を確認し、cloudtrail:StopLogging 等の不審な権限を削除する。",
+      "【保全】当該 AccessKey を使っていた EC2 があれば aws ec2 create-snapshot でスナップショットを取得し、SG 隔離する。",
+      "【再発防止】AWS Config ルール cloud-trail-enabled、EventBridge の StopLogging 通知、SCP での cloudtrail:StopLogging / DeleteTrail の Deny を設定する。"
+    ],
+    "rationale": "IAM ユーザーの AccessKey で CloudTrail のロギングが無効化された。攻撃者が証跡を消すために監査ログを止める典型的な防御回避で、T1562.008 に直接対応する。",
+    "source": "bedrock"
+  },
+  {
+    "finding_type": "Exfiltration:S3/AnomalousBehavior",
+    "attack": {
+      "tactic": "exfiltration",
+      "technique_id": "T1530",
+      "technique_name": "Data from Cloud Storage",
+      "confidence": "medium"
+    },
+    "triage_steps": [
+      "【ログ確認】CloudTrail で当該バケットへの GetObject / ListBucket / CopyObject を抽出し、アクセス元 IP・IAM プリンシパル・時刻を特定する。",
+      "【影響範囲】S3 サーバーアクセスログを Athena で分析し、外部転送されたオブジェクト名・サイズ・件数を確認する。",
+      "【アクセス元の隔離】不審なプリンシパルのアクセスキーを aws iam update-access-key --status Inactive で無効化する。",
+      "【バケット保護】信頼できる IP・プリンシパル以外を Deny するバケットポリシーを適用し、必要なら put-public-access-block を有効化する。",
+      "【証拠保全】list-object-versions / get-bucket-policy / get-bucket-acl で状態を記録し、ログにオブジェクトロックを設定する。",
+      "【エスカレーション】Security Hub / SNS で通知し、データ漏洩の可能性があれば法務・コンプライアンスを含む IR 手順を起動する。"
+    ],
+    "rationale": "S3 バケットからの異常なデータ取得パターンを検出。T1530 に対応するが、アクセス元や API コールの詳細が finding に無いため confidence は medium。",
+    "source": "bedrock"
+  }
+]
